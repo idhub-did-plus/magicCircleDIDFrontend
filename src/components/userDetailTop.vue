@@ -15,22 +15,23 @@
         <div id="textInfo" class="info">
             <ul>
                 <li>
-                    <span>生日</span>
+                    <span>address</span>
                     <p v-for="(i,index) in msg.archive.identityInfo.address.addressSequence" :key="index">
                         {{i.name}}:{{i.value}}
                     </p>
+                    <p>postalCode:{{msg.archive.identityInfo.address.postalCode}}</p>
                 </li>
-                <li><span>生日</span>{{msg.archive.identityInfo.birthday}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.country}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.residenceCountry}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.idcardNumber}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.passportNumber}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.phoneNumber}}</li>
-                <li><span>生日</span>{{msg.archive.identityInfo.gender}}</li>
-                <li><span>生日</span>{{msg.archive.basicInfo.email}}</li>
-                <li><span>生日</span>{{msg.archive.basicInfo.taxId}}</li>
-                <li><span>生日</span>{{msg.archive.basicInfo.ssn}}</li>
-                <li><span>生日</span>{{msg.archive.financialProfile}}</li>
+                <li><span>birthday</span>{{msg.archive.identityInfo.birthday}}</li>
+                <li><span>country</span>{{msg.archive.identityInfo.country}}</li>
+                <li><span>residenceCountry</span>{{msg.archive.identityInfo.residenceCountry}}</li>
+                <li><span>idcardNumber</span>{{msg.archive.identityInfo.idcardNumber}}</li>
+                <li><span>passportNumber</span>{{msg.archive.identityInfo.passportNumber}}</li>
+                <li><span>phoneNumber</span>{{msg.archive.identityInfo.phoneNumber}}</li>
+                <li><span>gender</span>{{msg.archive.identityInfo.gender}}</li>
+                <li><span>email</span>{{msg.archive.basicInfo.email}}</li>
+                <li><span>taxId</span>{{msg.archive.basicInfo.taxId}}</li>
+                <li><span>ssn</span>{{msg.archive.basicInfo.ssn}}</li>
+                <li><span>financialProfile</span>{{msg.archive.financialProfile}}</li>
             </ul>
         </div>
         <div id="fileInfo" class="info">
@@ -178,7 +179,10 @@ export default {
         }
     },
     mounted(){
-        
+        var json = this.msg;
+        for(var key in json){
+            console.log(key);
+        }
     }
 }
 </script>

@@ -32,22 +32,6 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        // proxy: { // 设置代理
-        //     "/api":{
-        //         target:"http://10.16.34.24:3005",
-        //         changeOrigin:true,
-        //         pathRewrite:{
-        //             "^/api":""
-        //         }
-        //     },
-        //     "/provider":{
-        //         target:"http://10.16.58.38:8080",
-        //         changeOrigin:true,
-        //         pathRewrite:{
-        //             "^/provider":""
-        //         }
-        //     }
-        // },
         before: app => { }
     },
     // 第三方插件配置

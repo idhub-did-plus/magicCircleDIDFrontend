@@ -14,14 +14,14 @@
 </template>
 <style lang="scss">
     #nav{
-        height:60px;
+        height:62px;
         background:#161d29;
-        padding:0 120px;
+        padding:0 47px;
         color:#fff;
         font-family: "微软雅黑";
         #title{
             width:60px;
-            height:60px;
+            height:62px;
             font-size:20px;
             float:left;
             overflow: hidden;
@@ -30,13 +30,13 @@
                 height:146px;
                 background: url("../assets/logo.png") no-repeat;
                 background-size: 32%;
-                background-position: 3px 8px;
+                background-position: 3px 14px;
             }
         }
         span{
             display: inline-block;
-            font-size: 22px;
-            margin-top: 17px;
+            font-size: 16px;
+            margin-top: 24px;
             margin-left: 4px;
         }
         ul{
@@ -48,6 +48,7 @@
                 padding:0 20px;
                 float:left;
                 cursor: pointer;
+                font-size: 14px;
             }
         }
     }

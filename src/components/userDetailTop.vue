@@ -14,14 +14,7 @@
         </div>
         <div id="textInfo" class="info">
             <ul>
-                <li>
-                    <span>address</span>
-                    <p v-for="(i,index) in msg.archive.identityInfo.address.addressSequence" :key="index">
-                        {{i.name}}:{{i.value}}
-                    </p>
-                    <p>postalCode:{{msg.archive.identityInfo.address.postalCode}}</p>
-                </li>
-                <li><span>birthday</span>{{msg.archive.identityInfo.birthday}}</li>
+                <li style="margin-top:20px;"><span>birthday</span>{{msg.archive.identityInfo.birthday}}</li>
                 <li><span>country</span>{{msg.archive.identityInfo.country}}</li>
                 <li><span>residenceCountry</span>{{msg.archive.identityInfo.residenceCountry}}</li>
                 <li><span>idcardNumber</span>{{msg.archive.identityInfo.idcardNumber}}</li>
@@ -31,13 +24,20 @@
                 <li><span>email</span>{{msg.archive.basicInfo.email}}</li>
                 <li><span>taxId</span>{{msg.archive.basicInfo.taxId}}</li>
                 <li><span>ssn</span>{{msg.archive.basicInfo.ssn}}</li>
+                <li>
+                    <span>address</span>
+                    <p v-for="(i,index) in msg.archive.identityInfo.address.addressSequence" :key="index">
+                        <span class="address">{{i.name}}:</span>{{i.value}}
+                    </p>
+                    <p><span class="address">postalCode:</span>{{msg.archive.identityInfo.address.postalCode}}</p>
+                </li>
                 <li><span>financialProfile</span>{{msg.archive.financialProfile}}</li>
             </ul>
         </div>
         <div id="fileInfo" class="info">
             <ul ref="ul1">
                 <li v-for="(item,index) in msg.materials" :key="index">
-                    <div @click="showDetial">
+                    <div>
                         <p><img src="../assets/file.jpg" alt=""></p>
                         <span>{{item.type}}</span>
                     </div>
@@ -68,14 +68,14 @@
                 background-size: 100%;
             }
             #img{
-                width:120px;
-                height:120px;
+                width:100px;
+                height:100px;
                 border:1px solid #ccc;
                 border-radius: 50%;
                 overflow: hidden;
                 position: absolute;
-                top:70px;
-                left:30px;
+                top:80px;
+                left:50px;
                 img{
                     width:100%;
                     height:100%;
@@ -110,13 +110,20 @@
                     padding:6px;
                     color:#000;
                     span{
-                        padding-left:40px;
-                        padding-right:90px;
+                        padding-left:20px;
+                        // padding-right:90px;
                         font-weight: 600;
+                        display:inline-block;
+                        width:220px;
+                    }
+                    .address{
+                        font-weight: 500;
+                        padding-left: 0;
+                        width: 100px;
                     }
                     p{
                         padding:6px;
-                        padding-left: 170px;
+                        padding-left: 220px;
                     }
                 }
             }
@@ -150,7 +157,7 @@
                     span{
                         margin-top: 10px;
                         margin-bottom: 20px;
-                        display:inline-block;
+                        display:block;
                         font-size: 12px;
                         color:#000;
                     }
@@ -169,20 +176,17 @@
 export default {
     props:["msg","iss"],
     methods:{
-        showDetial(){
-            this.$refs.ul1.style.display = "none";
-            this.$refs.show.style.display = "block";
-            this.$refs.back.onclick = ()=>{
-                this.$refs.ul1.style.display = "block";
-                this.$refs.show.style.display = "none";
-            }
-        }
+        // showDetial(){
+        //     this.$refs.ul1.style.display = "none";
+        //     this.$refs.show.style.display = "block";
+        //     this.$refs.back.onclick = ()=>{
+        //         this.$refs.ul1.style.display = "block";
+        //         this.$refs.show.style.display = "none";
+        //     }
+        // }
     },
     mounted(){
-        var json = this.msg;
-        for(var key in json){
-            console.log(key);
-        }
+        
     }
 }
 </script>

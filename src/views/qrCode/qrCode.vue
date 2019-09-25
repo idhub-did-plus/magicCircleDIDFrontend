@@ -63,6 +63,7 @@
 </style>
 <script>
 import QRCode from "qrcodejs2"
+import url from "../../modules/baseURL"
 const base64url = require('base64url');
 const axios = require('axios');
 
@@ -74,13 +75,13 @@ export default {
     },
     created(){
         //获取uuid
-        this.$http.get("http://10.16.34.24:3005/v1/did/uuid").then(res=>{
+        this.$http.get(url.thirdParty+"/v1/did/uuid").then(res=>{
             this.uuid = res.data.uuid;
             var jsonObj = {
             "aud":"0x49dba8f906c745b0a82f4d21e02bafd7df1a0be4",
             "sub":"login|authorization|st|did|archive",
             "url":window.location.href,
-            "rdt":"http://10.16.34.24:3005/v1/did/token/",
+            "rdt":url.thirdParty+"/v1/did/token/",
             "jti":this.uuid
             }
             var jsonStr = JSON.stringify(jsonObj);
@@ -93,7 +94,7 @@ export default {
         }).then(res=>{
             //向服务器轮询验证结果
             var polling = setInterval(()=>{
-                axios.post("http://10.16.34.24:3005/v1/did/check",{
+                axios.post(url.thirdParty+"/v1/did/check",{
                     uuid:this.uuid
                 }).then(res=>{
                     if(res.status=200){

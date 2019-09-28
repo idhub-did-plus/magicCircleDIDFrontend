@@ -43,10 +43,6 @@
                     </div>
                 </li>
             </ul>
-            <div id="show" ref="show">
-                <button type="button" class="btn btn-default" ref="back">返回信息列表</button>
-                <div>证件内容</div>
-            </div>
         </div>
     </div>
 </template>
@@ -119,7 +115,7 @@
                     .address{
                         font-weight: 500;
                         padding-left: 0;
-                        width: 100px;
+                        width: 120px;
                     }
                     p{
                         padding:6px;
@@ -140,6 +136,8 @@
                     margin-top: 35px;
                     margin-left: 30px;
                     width:150px;
+                    // 暂定高度
+                    height:170px;
                     overflow: hidden;
                     box-shadow: 1px 1px 1px #ccc;
                     text-align: center;
@@ -151,8 +149,6 @@
                             width:100%;
                             height:100%;
                         }
-                        // background: url("../assets/file.jpg") no-repeat;
-                        // background-size: 100%;
                     }
                     span{
                         margin-top: 10px;
@@ -163,30 +159,11 @@
                     }
                 }
             }
-            #show{
-                display: none;
-                div{
-                    margin-top: 20px;
-                }
-            }
         }
     }
 </style>
 <script>
 export default {
-    props:["msg","iss"],
-    methods:{
-        // showDetial(){
-        //     this.$refs.ul1.style.display = "none";
-        //     this.$refs.show.style.display = "block";
-        //     this.$refs.back.onclick = ()=>{
-        //         this.$refs.ul1.style.display = "block";
-        //         this.$refs.show.style.display = "none";
-        //     }
-        // }
-    },
-    mounted(){
-        
-    }
+    props:["msg","iss"]
 }
 </script>

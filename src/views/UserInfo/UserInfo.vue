@@ -34,20 +34,23 @@ export default {
         Right
     },
     created(){
-        // this.msg = require("../../assets/test.json").data;
-        // var test = "eyJhbGciOiJFUzI1NmsiLCJ0eXAiOiJKV1QifQ==.eyJhdWQiOiJkaWQ6aWRodWI6MHhkaWQxZDhmOTA2Yzc0NWIwYTgyZjRkMjFlMDJiYWZkN2RmMWEwZTE0Iiwic3ViIjoibG9naW58YXV0aG9yaXphdGlvbnxzdHxkaWR8YXJjaGl2ZSIsInVybCI6Imh0dHA6XC9cL2xvY2FsaG9zdDo4MDgwXC9zdC1wcm9qZWN0XC8jXC9xcmNvZGUiLCJyZHQiOiJodHRwOlwvXC8xMC4xNi4zNC4yNDozMDA1XC92MVwvZGlkXC90b2tlblwvIiwianRpIjoiNDNjMTJlNTctN2NkYi00Mzg1LWFhZWUtNjNiNGJjMzEzZjJlIiwiZXhwIjoxNTY5MjkxNzI4LCJpc3MiOiIweDE0YmMzMDk2ZmFlZjdhMDExZmZkNjU1ZjRhMGZkMmI1MzRjMDlkMTkifQ==.NOKzlA3aaCwXHIbhKKX4fWO7J4Jd6PfKFVqeoN4_5nlxJEFXJTWgYasXXCdsA6eKgPhzPMACsJrwr6m8vLaEnRw=";
-        // window.localStorage.setItem("token",test)
         var jwt = window.localStorage.getItem("token");
         this.payload = jwt.split(".")[1];
         this.jwt = jwt;
         this.decode =  JSON.parse(base64url.decode(this.payload));
         this.iss = this.decode.iss;
 
-        this.$http.post(url.baseURL+"/thirdparty/identity_information",{
-            jwt:this.jwt,
-            identity:this.iss
+        this.$http({
+            method: 'post',
+            url: url.baseURL+"/thirdparty/identity_information?identity="+this.iss,
+            data: this.jwt,
+            headers: { 'content-type': 'text/plain' }
         }).then(res=>{
-            this.msg = res.data;
+            if(res.data.success == true){
+                this.msg = res.data.data;
+            }else{
+                alert("授权访问失败")
+            }
         })
     }
 }

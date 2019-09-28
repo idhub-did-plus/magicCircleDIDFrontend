@@ -3,11 +3,11 @@
         <div id="claimBox">
             <div id="header"></div>
             <div id="content">
-                <button type="button" class="btn btn-default claim">IDHub VIP</button>
-                <button type="button" class="btn btn-default claim">IDHub SVIP</button>
-                <button type="button" class="btn btn-default claim">SEC Accredited Investor</button>
-                <button type="button" class="btn btn-default claim">SEC Accredited Purchaser</button>
-                <button type="button" class="btn btn-default claim">ST Compliant Investor</button>
+                <button type="button" class="btn btn-default claim" id="IDHub_VIP">IDHub VIP</button>
+                <button type="button" class="btn btn-default claim" id="IDHub_SVIP">IDHub SVIP</button>
+                <button type="button" class="btn btn-default claim" id="SEC_Accredited_Investor">SEC Accredited Investor</button>
+                <button type="button" class="btn btn-default claim" id="SEC_Accredited_Purchaser">SEC Accredited Purchaser</button>
+                <button type="button" class="btn btn-default claim" id="ST_Compliant_Investor">ST Compliant Investor</button>
             </div>
         </div>
     </div>
@@ -46,19 +46,32 @@
 </style>
 <script>
 export default {
+    data(){
+        return {
+            cData:""
+        }
+    },
     props:["msg"],
-    mounted(){
-        var arr = this.msg.claims;
-        var btnArr = document.getElementsByClassName("claim");
-        for(var i=0;i<arr.length;i++){
-            var claimType = arr[i].claim.claimType;
-            var content = btnArr[i].innerHTML;
-            if(claimType = content){
-                btnArr[i].style.backgroundColor = "#1E90FF";
-                btnArr[i].style.color = "#fff";
-                btnArr[i].setAttribute("class","btn btn-primary claim")
+    watch: {
+        //接收父组件传来的值，点亮右侧claim类型
+        msg(newVal,oldVal){
+            this.cData = newVal;  
+            var arr = this.cData.claims;
+            var btnArr = document.getElementsByClassName("claim");
+            for(var j=0;j<btnArr.length;j++){
+                for(var i=0;i<arr.length;i++){
+                    console.log(arr[i]);
+                    var tmp = arr[i].replace("\\", '');
+                    var content = btnArr[j].getAttribute("id");
+                    if(tmp.indexOf(content) != -1){
+                        btnArr[j].style.backgroundColor = "#1E90FF";
+                        btnArr[j].style.color = "#fff";
+                        btnArr[j].setAttribute("class","btn btn-primary claim")
+                    }
+                }
             }
         }
-    }
+        
+    },
 }
 </script>

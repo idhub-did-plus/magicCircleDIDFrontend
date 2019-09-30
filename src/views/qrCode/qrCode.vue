@@ -101,7 +101,7 @@ export default {
                     uuid:this.uuid
                 }).then(res=>{
                     if(res.status=200){
-                        clearInterval(polling);
+                        clearInterval(this.polling);
                         var jwt = res.data.token;
                         //把jwt存起来，跳转到用户信息页
                         window.localStorage.setItem("token",jwt)
@@ -151,7 +151,7 @@ export default {
                         uuid:this.uuid
                     }).then(res=>{
                         if(res.status=200){
-                            clearInterval(polling);
+                            clearInterval(this.polling);
                             var jwt = res.data.token;
                             //把jwt存起来，跳转到用户信息页
                             window.localStorage.setItem("token",jwt)

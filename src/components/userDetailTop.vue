@@ -134,8 +134,8 @@
                 li{
                     float:left;
                     margin-top: 35px;
-                    margin-left: 30px;
-                    width:150px;
+                    margin-left: 20px;
+                    width:160px;
                     // 暂定高度
                     height:170px;
                     overflow: hidden;

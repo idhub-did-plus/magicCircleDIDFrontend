@@ -95,6 +95,12 @@ export default {
                 correctLevel: 3
             });  // 设置要生成二维码的数据
         }).then(res=>{
+            //二维码过期时间
+            setTimeout(()=>{
+                this.$refs.fail.style.display = "block";
+                this.$refs.span.innerHTML = "二维码失效，点击刷新";
+                clearInterval(this.polling);
+            },1000*60*5);
             //向服务器轮询验证结果
             this.polling = setInterval(()=>{
                 axios.post(url.thirdParty+"/v1/did/check",{
@@ -102,6 +108,7 @@ export default {
                 }).then(res=>{
                     if(res.status=200){
                         clearInterval(this.polling);
+                        // 改为页面跳转时清除定时器
                         var jwt = res.data.token;
                         //把jwt存起来，跳转到用户信息页
                         window.localStorage.setItem("token",jwt)
@@ -115,55 +122,16 @@ export default {
             },2000);
         })
     },
-    mounted(){
-        setTimeout(()=>{
-            this.$refs.fail.style.display = "block";
-            this.$refs.span.innerHTML = "二维码失效，点击刷新";
-            clearInterval(this.polling);
-        },1000*60*5)
-    },
     methods:{
         refresh(){
             //隐藏遮罩层
             this.$refs.fail.style.display = "none";
-            //获取uuid 重新生成二维码
-            this.$http.get(url.thirdParty+"/v1/did/uuid").then(res=>{
-                this.uuid = res.data.uuid;
-                var jsonObj = {
-                "aud":"0x49dba8f906c745b0a82f4d21e02bafd7df1a0be4",
-                "sub":"login|authorization|st|did|archive",
-                "url":window.location.href,
-                // "url":"http://stplatform.idhub.network",
-                "rdt":url.thirdParty+"/v1/did/token/",
-                "jti":this.uuid
-                }
-                var jsonStr = JSON.stringify(jsonObj);
-                var base64Str = base64url(jsonStr);
-                var didJsonStr = "did://sign/jwt/"+base64Str;
-                let qrcode = new QRCode('qrcode',{
-                    text:didJsonStr,
-                    correctLevel: 3
-                });  // 设置要生成二维码的数据
-            }).then(res=>{
-                //向服务器轮询验证结果
-                this.polling = setInterval(()=>{
-                    axios.post(url.thirdParty+"/v1/did/check",{
-                        uuid:this.uuid
-                    }).then(res=>{
-                        if(res.status=200){
-                            clearInterval(this.polling);
-                            var jwt = res.data.token;
-                            //把jwt存起来，跳转到用户信息页
-                            window.localStorage.setItem("token",jwt)
-                            this.$router.push({
-                                path:"userinfo"
-                            }); 
-                        }else{
-                            alert("身份验证失败");
-                        };
-                    })
-                },2000);
-            })
+            //二维码过期时间
+            setTimeout(()=>{
+                this.$refs.fail.style.display = "block";
+                this.$refs.span.innerHTML = "二维码失效，点击刷新";
+                clearInterval(this.polling);
+            },1000*60*5);
         }
     },
     beforeRouteLeave(to, from, next) {

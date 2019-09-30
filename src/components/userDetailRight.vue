@@ -55,14 +55,14 @@ export default {
     watch: {
         //接收父组件传来的值，点亮右侧claim类型
         msg(newVal,oldVal){
-            this.cData = newVal;  
+            this.cData = newVal;
             var arr = this.cData.claims;
             var btnArr = document.getElementsByClassName("claim");
             for(var j=0;j<btnArr.length;j++){
                 for(var i=0;i<arr.length;i++){
-                    console.log(arr[i]);
                     var tmp = arr[i].replace("\\", '');
                     var content = btnArr[j].getAttribute("id");
+                    //判断返回值中是否包含对应的claim类型字段
                     if(tmp.indexOf(content) != -1){
                         btnArr[j].style.backgroundColor = "#1E90FF";
                         btnArr[j].style.color = "#fff";

@@ -6,8 +6,9 @@
             </div>
             <span>MagicCircle</span>
             <ul>
-                <li @click="toggle($event)" id="login">首页</li>
-                <li @click="toggle($event)" id="contact">联系我们</li>
+                <li @click="toggle($event)" id="login">{{$t('m.nav.home')}}</li>
+                <li @click="toggle($event)" id="contact">{{$t('m.nav.contect')}}</li>
+                <li @click="switchLang()" id="lang">{{$t('m.nav.lang')}}</li>
             </ul>
         </div>
     </div>
@@ -60,6 +61,14 @@ export default {
             //路由跳转
             var path =  $event.currentTarget.getAttribute("id");
             this.$router.push({path:path});
+        },
+        // 点击事件，切换语言
+        switchLang(){
+            var choose = window.confirm("是否确定切换语言？");
+            if(choose){
+                const locale = this.$i18n.locale;
+                locale === 'zh-CN' ? this.$i18n.locale = 'en-US' : this.$i18n.locale = 'zh-CN';
+            }
         }
     }
 }

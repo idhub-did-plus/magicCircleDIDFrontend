@@ -14,24 +14,24 @@
         </div>
         <div id="textInfo" class="info">
             <ul>
-                <li style="margin-top:20px;"><span>birthday</span>{{msg.archive.identityInfo.birthday}}</li>
-                <li><span>country</span>{{msg.archive.identityInfo.country}}</li>
-                <li><span>residenceCountry</span>{{msg.archive.identityInfo.residenceCountry}}</li>
-                <li><span>idcardNumber</span>{{msg.archive.identityInfo.idcardNumber}}</li>
-                <li><span>passportNumber</span>{{msg.archive.identityInfo.passportNumber}}</li>
-                <li><span>phoneNumber</span>{{msg.archive.identityInfo.phoneNumber}}</li>
-                <li><span>gender</span>{{msg.archive.identityInfo.gender}}</li>
-                <li><span>email</span>{{msg.archive.basicInfo.email}}</li>
-                <li><span>taxId</span>{{msg.archive.basicInfo.taxId}}</li>
-                <li><span>ssn</span>{{msg.archive.basicInfo.ssn}}</li>
+                <li style="margin-top:20px;"><span>{{$t('m.userinfo.birthday')}}</span>{{msg.archive.identityInfo.birthday}}</li>
+                <li><span>{{$t('m.userinfo.country')}}</span>{{msg.archive.identityInfo.country}}</li>
+                <li><span>{{$t('m.userinfo.residenceCountry')}}</span>{{msg.archive.identityInfo.residenceCountry}}</li>
+                <li><span>{{$t('m.userinfo.idcardNumber')}}</span>{{msg.archive.identityInfo.idcardNumber}}</li>
+                <li><span>{{$t('m.userinfo.passportNumber')}}</span>{{msg.archive.identityInfo.passportNumber}}</li>
+                <li><span>{{$t('m.userinfo.phoneNumber')}}</span>{{msg.archive.identityInfo.phoneNumber}}</li>
+                <li><span>{{$t('m.userinfo.gender')}}</span>{{msg.archive.identityInfo.gender}}</li>
+                <li><span>{{$t('m.userinfo.email')}}</span>{{msg.archive.basicInfo.email}}</li>
+                <li><span>{{$t('m.userinfo.taxId')}}</span>{{msg.archive.basicInfo.taxId}}</li>
+                <li><span>{{$t('m.userinfo.ssn')}}</span>{{msg.archive.basicInfo.ssn}}</li>
                 <li>
-                    <span>address</span>
+                    <span>{{$t('m.userinfo.address')}}</span>
                     <p v-for="(i,index) in msg.archive.identityInfo.address.addressSequence" :key="index">
                         <span class="address">{{i.name}}:</span>{{i.value}}
                     </p>
-                    <p><span class="address">postalCode:</span>{{msg.archive.identityInfo.address.postalCode}}</p>
+                    <p><span class="address">{{$t('m.userinfo.postalCode')}}</span>{{msg.archive.identityInfo.address.postalCode}}</p>
                 </li>
-                <li><span>financialProfile</span>{{msg.archive.financialProfile}}</li>
+                <li><span>{{$t('m.userinfo.financialProfile')}}</span>{{msg.archive.financialProfile}}</li>
             </ul>
         </div>
         <div id="fileInfo" class="info">
@@ -107,10 +107,9 @@
                     color:#000;
                     span{
                         padding-left:20px;
-                        // padding-right:90px;
                         font-weight: 600;
                         display:inline-block;
-                        width:220px;
+                        width:230px;
                     }
                     .address{
                         font-weight: 500;
@@ -119,13 +118,13 @@
                     }
                     p{
                         padding:6px;
-                        padding-left: 220px;
+                        padding-left: 230px;
                     }
                 }
             }
         }
         #fileInfo{
-            padding:30px 40px;
+            padding:30px 20px;
             margin-bottom: 50px;
             overflow: hidden;
             ul{
@@ -135,9 +134,8 @@
                     float:left;
                     margin-top: 35px;
                     margin-left: 20px;
-                    width:160px;
-                    // 暂定高度
-                    height:170px;
+                    width:170px;
+                    height:180px;
                     overflow: hidden;
                     box-shadow: 1px 1px 1px #ccc;
                     text-align: center;
@@ -153,9 +151,11 @@
                     span{
                         margin-top: 10px;
                         margin-bottom: 20px;
+                        padding:3px;
                         display:block;
                         font-size: 12px;
                         color:#000;
+                        word-wrap: break-word;
                     }
                 }
             }

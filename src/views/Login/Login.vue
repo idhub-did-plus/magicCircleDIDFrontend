@@ -2,9 +2,9 @@
     <div class="login">
         <Navigator></Navigator>
         <div id="intro">
-            <div>为什么选择</div>
+            <div>{{$t('m.home.tit')}}</div>
             <div>Magic Circle</div>
-            <div>Magic Circle提供统一身份认证访问，兼容标记化平台，全液体数字资产市场和STO平台可编程价值管理等服务。通过投诉方式进行标记，现实世界的资产可以在全球基础上实现其真实的流动性和真正的价值。</div>
+            <div>{{$t('m.home.desc')}}</div>
         </div>
         <div id="loginBox">
             <div id="LoginTop">
@@ -14,7 +14,7 @@
             </div>
             <div id="LoginBottom">
                 <router-link to="/qrcode">
-                    <button type="button" class="btn btn-success">使用DID登录</button>
+                    <button type="button" class="btn btn-success">{{$t('m.home.login')}}</button>
                 </router-link>
             </div>
         </div>

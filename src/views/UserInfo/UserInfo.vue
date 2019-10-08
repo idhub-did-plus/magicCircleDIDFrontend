@@ -49,7 +49,7 @@ export default {
             if(res.data.success == true){
                 this.msg = res.data.data;
             }else{
-                alert("授权访问失败")
+                alert(this.$t('m.userinfo.alert'))
             }
         })
     }

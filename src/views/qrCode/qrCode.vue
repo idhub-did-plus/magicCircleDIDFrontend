@@ -2,7 +2,7 @@
     <div class="qrcode">
         <div class="codeBox" ref="newcode">
             <div id="qrcode"></div>
-            <span ref="span">使用app钱包扫码登录</span>
+            <span ref="span">{{$t('m.qrcode.span')}}</span>
         </div>
         <div id="cover" @click="refresh" ref="fail" style="display:none">
             <div id="icon"></div>
@@ -98,7 +98,7 @@ export default {
             //二维码过期时间
             setTimeout(()=>{
                 this.$refs.fail.style.display = "block";
-                this.$refs.span.innerHTML = "二维码失效，点击刷新";
+                this.$refs.span.innerHTML = this.$t('m.qrcode.fail');
                 clearInterval(this.polling);
             },1000*60*5);
             //向服务器轮询验证结果
@@ -116,7 +116,7 @@ export default {
                             path:"userinfo"
                         }); 
                     }else{
-                        alert("身份验证失败");
+                        alert(this.$t('m.qrcode.verify'));
                     };
                 })
             },2000);
@@ -129,7 +129,7 @@ export default {
             //二维码过期时间
             setTimeout(()=>{
                 this.$refs.fail.style.display = "block";
-                this.$refs.span.innerHTML = "二维码失效，点击刷新";
+                this.$refs.span.innerHTML = this.$t('m.qrcode.fail');
                 clearInterval(this.polling);
             },1000*60*5);
         }

@@ -3,7 +3,7 @@
         <div id="box">
             <div id="top"></div>
             <div id="bottom">
-                <div id="username">
+                <div id="username" v-if="msg">
                     {{msg.archive.identityInfo.name.firstName}}
                     {{msg.archive.identityInfo.name.middleName}}
                     {{msg.archive.identityInfo.name.lastName}}
@@ -13,7 +13,7 @@
             <div id="img"><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3987282417,3624059467&fm=26&gp=0.jpg" alt=""></div>
         </div>
         <div id="textInfo" class="info">
-            <ul>
+            <ul v-if="msg">
                 <li style="margin-top:20px;"><span>{{$t('m.userinfo.birthday')}}</span>{{msg.archive.identityInfo.birthday}}</li>
                 <li><span>{{$t('m.userinfo.country')}}</span>{{msg.archive.identityInfo.country}}</li>
                 <li><span>{{$t('m.userinfo.residenceCountry')}}</span>{{msg.archive.identityInfo.residenceCountry}}</li>
@@ -31,7 +31,10 @@
                     </p>
                     <p><span class="address">{{$t('m.userinfo.postalCode')}}</span>{{msg.archive.identityInfo.address.postalCode}}</p>
                 </li>
-                <li><span>{{$t('m.userinfo.financialProfile')}}</span>{{msg.archive.financialProfile}}</li>
+                <li><span>{{$t('m.userinfo.financialProfile')}}</span>
+                    <p><span class="address">{{$t('m.userinfo.buyer')}}:</span>{{buyerType}}</p>
+                    <p><span class="address">{{$t('m.userinfo.investor')}}:</span>{{investorType}}</p>
+                </li>
             </ul>
         </div>
         <div id="fileInfo" class="info">
@@ -114,7 +117,7 @@
                     .address{
                         font-weight: 500;
                         padding-left: 0;
-                        width: 120px;
+                        width: 140px;
                     }
                     p{
                         padding:6px;
@@ -164,6 +167,17 @@
 </style>
 <script>
 export default {
-    props:["msg","iss"]
+    props:["msg","iss"],
+    watch:{
+        msg(newVal){
+            if(newVal.archive.financialProfile == null){
+                this.buyerType = null;
+                this.investorType = null;
+            }else{
+                this.buyerType = newVal.archive.financialProfile.buyerType;
+                this.investorType = newVal.archive.financialProfile.investorType;
+            }
+        }
+    }
 }
 </script>

@@ -22,7 +22,8 @@ const i18n = new VueI18n({
   messages: {
     'zh-CN': require('./languages/lang/zh'),   // 中文语言包
     'en-US': require('./languages/lang/en')    // 英文语言包
-  }
+  },
+  silentTranslationWarn: true   //关闭双语包警告
 })
 
 new Vue({

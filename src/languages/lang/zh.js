@@ -28,6 +28,8 @@ export const m = {
         ssn:'社保号',
         address:'地址',
         postalCode:'邮编',
-        financialProfile:'financialProfile'
+        financialProfile:'金融材料类别',
+        buyer:"合格购买人",
+        investor:"合格投资人"
     }
 }

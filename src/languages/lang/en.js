@@ -28,6 +28,8 @@ export const m = {
         ssn:'SSN',
         address:'Address',
         postalCode:'postalCode',
-        financialProfile:'financialProfile'
+        financialProfile:'financialProfile',
+        buyer:"buyerType",
+        investor:"investorType"
     }
 }

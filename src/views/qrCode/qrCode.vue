@@ -82,8 +82,8 @@ export default {
             var jsonObj = {
             "aud":"0x49dba8f906c745b0a82f4d21e02bafd7df1a0be4",
             "sub":"login|authorization|st|did|archive",
-            "url":window.location.href,
-            // "url":"http://stplatform.idhub.network",
+            // "url":window.location.href,
+            "url":"http://stplatform.idhub.network",
             "rdt":url.thirdParty+"/v1/did/token/",
             "jti":this.uuid
             }
@@ -106,7 +106,7 @@ export default {
                 axios.post(url.thirdParty+"/v1/did/check",{
                     uuid:this.uuid
                 }).then(res=>{
-                    if(res.status=200){
+                    if(res.status == 200){
                         clearInterval(this.polling);
                         // 改为页面跳转时清除定时器
                         var jwt = res.data.token;

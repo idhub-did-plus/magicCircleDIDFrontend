@@ -2,7 +2,7 @@ export const m = {
     nav: {
         home:'Home',
         contect:'Contect US',
-        lang:'English'
+        lang:'Chinese'
     },
     home: {
         login:'Login with DID',

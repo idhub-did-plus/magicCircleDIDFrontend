@@ -2,7 +2,7 @@ export const m = {
     nav: {
         home:'首页',
         contect:'联系我们',
-        lang:'中文'
+        lang:'英文'
     },
     home: {
         login:'使用DID登录',

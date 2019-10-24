@@ -8,6 +8,8 @@
                     {{msg.archive.identityInfo.name.middleName}}
                     {{msg.archive.identityInfo.name.lastName}}
                 </div>
+                <div id="username" v-else>
+                </div>
                 <div id="userdid">{{iss}}</div>
             </div>
             <div id="img"><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3987282417,3624059467&fm=26&gp=0.jpg" alt=""></div>
@@ -34,6 +36,29 @@
                 <li><span>{{$t('m.userinfo.financialProfile')}}</span>
                     <p><span class="address">{{$t('m.userinfo.buyer')}}:</span>{{buyerType}}</p>
                     <p><span class="address">{{$t('m.userinfo.investor')}}:</span>{{investorType}}</p>
+                </li>
+            </ul>
+            <ul v-else>
+                <li style="margin-top:20px;"><span>{{$t('m.userinfo.birthday')}}</span></li>
+                <li><span>{{$t('m.userinfo.country')}}</span></li>
+                <li><span>{{$t('m.userinfo.residenceCountry')}}</span></li>
+                <li><span>{{$t('m.userinfo.idcardNumber')}}</span></li>
+                <li><span>{{$t('m.userinfo.passportNumber')}}</span></li>
+                <li><span>{{$t('m.userinfo.phoneNumber')}}</span></li>
+                <li><span>{{$t('m.userinfo.gender')}}</span></li>
+                <li><span>{{$t('m.userinfo.email')}}</span></li>
+                <li><span>{{$t('m.userinfo.taxId')}}</span></li>
+                <li><span>{{$t('m.userinfo.ssn')}}</span></li>
+                <li>
+                    <span>{{$t('m.userinfo.address')}}</span>
+                    <p>
+                        <span class="address"></span>
+                    </p>
+                    <p><span class="address">{{$t('m.userinfo.postalCode')}}</span></p>
+                </li>
+                <li><span>{{$t('m.userinfo.financialProfile')}}</span>
+                    <p><span class="address">{{$t('m.userinfo.buyer')}}:</span></p>
+                    <p><span class="address">{{$t('m.userinfo.investor')}}:</span></p>
                 </li>
             </ul>
         </div>

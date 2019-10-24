@@ -7,7 +7,6 @@
             <span>MagicCircle</span>
             <ul>
                 <li @click="toggle($event)" id="login">{{$t('m.nav.home')}}</li>
-                <li @click="toggle($event)" id="contact">{{$t('m.nav.contect')}}</li>
                 <li @click="switchLang()" id="lang">{{$t('m.nav.lang')}}</li>
             </ul>
         </div>
